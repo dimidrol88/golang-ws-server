@@ -20,5 +20,11 @@ func (h *Handler) ConfigureRouter() *gin.Engine {
 		test.GET("/say-hello", h.sayHello)
 	}
 
+	ws := router.Group("/ws")
+	{
+		ws.GET("/", h.connect)
+		ws.GET("/echo", h.echo)
+	}
+
 	return router
 }
